@@ -7,6 +7,5 @@ import (
 )
 
 func SetupRoutes(app *echo.Echo) {
-	app.GET("/health", routes.HandleHealth)
 	app.GET("/ping", routes.HandlePing)
 }
