@@ -2,7 +2,7 @@
 
 ## To run the project
 
-`go run cmd/main/main.go`
+`docker-compose up`
 
 ## Sample output
 
@@ -22,5 +22,6 @@ ____________________________________O/_______
 
 ## Project makes use of
 
-- [go 1.19](https://go.dev/dl/#go1.19.6)
+- [go 1.19.6](https://go.dev/dl/#go1.19.6)
 - [labstack/echo](https://github.com/labstack/echo)
+- [cosmtrek/air](https://github.com/cosmtrek/air)
