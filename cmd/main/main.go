@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 
 	config "github.com/m-yasir/go-todo/pkg/config"
 	setup "github.com/m-yasir/go-todo/pkg/setup"
@@ -22,8 +21,6 @@ func main() {
 
 	config.ConfigureMiddlewares(app)
 	setup.SetupRoutes(app)
-
-	log.Print("Listening at port ", serverPort)
 
 	if err := app.Start(serverPort); err != nil {
 		fmt.Printf("Unable to start server %s\n", err)
