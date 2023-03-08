@@ -13,10 +13,10 @@ func ParseQueryParam[T comparable](params url.Values, parser QueryParamParser[T]
 	return parser.ParseParams(params)
 }
 
-func StrToBool(str string) (bool, error) {
+func StrToBool(str string) bool {
 	result, err := strconv.ParseBool(str)
 	if err != nil {
 		result = false
 	}
-	return result, nil
+	return result
 }

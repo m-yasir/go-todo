@@ -3,32 +3,23 @@ package utils
 import (
 	"net/url"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-// TestStrToBoolEmpty calls utils.StrToBool with a stringified bool value,
-// for a valid return value and no errors.
-func TestStrToBoolOnTrue(t *testing.T) {
-	want := true
-	val, err := StrToBool("true")
-	if err != nil {
-		t.Fatalf(`StrToBool("true") resulted in an error reason: %q, val = %v, want match for %#v`, err, val, want)
-	}
-	if want != val {
-		t.Fatalf(`StrToBool("Gladys") = %v, %v, want match for %#v, nil`, val, err, want)
-	}
-}
+func TestStrToBool(t *testing.T) {
+	t.Run("converts stringified boolean to bool", func(t *testing.T) {
+		val := StrToBool("true")
+		want := true
 
-// TestStrToBoolEmpty calls utils.StrToBool with an empty string,
-// checking for an error.
-func TestStrToBoolEmpty(t *testing.T) {
-	val, err := StrToBool("")
-	want := false
-	if err != nil {
-		t.Fatalf(`StrToBool("") = %v, want %v, error %v`, val, want, err)
-	}
-	if want != val {
-		t.Fatalf(`StrToBool("") = %v, want %v, error %q`, val, want, err)
-	}
+		assert.True(t, val == want)
+	})
+	t.Run("returns false if empty string is passed", func(t *testing.T) {
+		val := StrToBool("")
+		want := false
+
+		assert.True(t, val == want)
+	})
 }
 
 type TestParserStruct struct {
@@ -42,11 +33,13 @@ func (tp TestParserStruct) ParseParams(params url.Values) TestParserStruct {
 
 func TestParseQueryParam(t *testing.T) {
 
-	val := ParseQueryParam[TestParserStruct](url.Values{"test": {"hello"}}, TestParserStruct{})
+	t.Run("Parses query parameters correctly", func(t *testing.T) {
+		val := ParseQueryParam[TestParserStruct](url.Values{"test": {"hello"}}, TestParserStruct{})
 
-	want := "hello"
+		want := "hello"
 
-	if val.msg != want {
-		t.Fatalf(`ParseQueryParam(url.Values, TestParserStruct{}) = %q, want "hello"`, val)
-	}
+		if val.msg != want {
+			t.Fatalf(`ParseQueryParam(url.Values, TestParserStruct{}) = %q, want "hello"`, val)
+		}
+	})
 }
