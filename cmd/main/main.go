@@ -10,7 +10,7 @@ import (
 )
 
 func init() {
-	// setup db
+	setup.SetupDb()
 }
 
 var serverPort string = ":8080"
