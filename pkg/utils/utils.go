@@ -20,3 +20,8 @@ func StrToBool(str string) bool {
 	}
 	return result
 }
+
+type Response[T comparable] struct {
+	Data    []T  `json:"data"`
+	Success bool `json:"success"`
+}
