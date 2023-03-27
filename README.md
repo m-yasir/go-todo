@@ -25,3 +25,7 @@ ____________________________________O/_______
 - [go 1.19.6](https://go.dev/dl/#go1.19.6)
 - [labstack/echo](https://github.com/labstack/echo)
 - [cosmtrek/air](https://github.com/cosmtrek/air)
+
+## Motive
+
+To get a feel of working with go lang
